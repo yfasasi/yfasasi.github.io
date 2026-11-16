@@ -23,7 +23,7 @@ repository               : yfasasi.github.io
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "my_self_picture.jpg"
   name             : Yussuf Fasasi
   pronouns         : # example: "she/her"  
   bio              : PhD student in Computational Material Science | ASE | Pymatgen | ML
