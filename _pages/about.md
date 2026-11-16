@@ -16,7 +16,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I'm **Yussuf Fasasi**, a PhD student in Computational Materials Science. My research focuses on using atomistic simulations, high-throughput workflows, and machine learning to understand and design materials.
+Hi, I'm **Yussuf Fasasi**, a PhD student in Computational Materials Science. My research focuses on using atomistic simulations, high-throughput workflows, and DFT to understand and design materials.
 
 ### What You'll Find Here
 * **Tutorials & Code:** Step-by-step guides, new cools in Material Sciences, Jupyter notebooks, and workflows for **ASE**, **pymatgen**, DFT post-processing, life as I navigate grad school. And as I sharpened my skills in ML, then machine learning workflow will be incorporated.  
