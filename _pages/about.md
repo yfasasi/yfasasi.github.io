@@ -5,7 +5,6 @@ title: "&nbsp;"
 author_profile: true
 header:
   overlay_image: /images/sky_my_new_header_image.jpg
-  overlay_filter: 0.2
 ---
 
 ## About Me
