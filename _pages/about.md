@@ -2,6 +2,14 @@
 permalink: /
 title: "About Me"
 author_profile: true
+header:
+  overlay_image: /images/header_image.jpg
+  overlay_filter: 0.3
+---
+---
+permalink: /
+title: "About Me"
+author_profile: true
 ---
 Hi, I'm **Yussuf Fasasi**, a PhD student in Computational Materials Science. My research focuses on using atomistic simulations, high-throughput workflows, and DFT to understand and design materials.
 
