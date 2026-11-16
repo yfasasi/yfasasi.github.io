@@ -4,7 +4,7 @@ permalink: /
 title: "&nbsp;"
 author_profile: true
 header:
-  overlay_image: /images/header_image.jpg
+  overlay_image: /images/new_header_image.jpg
   overlay_filter: 0.2
 ---
 
