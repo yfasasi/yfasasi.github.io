@@ -29,19 +29,4 @@ Feel free to explore the **Tutorials** and **Blog Posts** tabs above, or reach o
     </ul>
   </div>
 
-  <!-- Right Column: Education -->
-  <div style="flex: 1; min-width: 250px;">
-    <h3>Education</h3>
-    <ul style="list-style: none; padding-left: 0;">
-      <li style="margin-bottom: 1rem;">
-        <i class="fas fa-graduation-cap" aria-hidden="true"></i> <strong>PhD in Materials Science</strong><br>
-        <span style="color: #666; font-size: 0.9em;">Your University Name</span>
-      </li>
-      <li>
-        <i class="fas fa-graduation-cap" aria-hidden="true"></i> <strong>BSc / MSc in Your Previous Major</strong><br>
-        <span style="color: #666; font-size: 0.9em;">Previous University Name</span>
-      </li>
-    </ul>
-  </div>
-
 </div>
