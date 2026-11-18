@@ -11,8 +11,10 @@ locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : Yussuf Fasasi
 title_separator          : "-"
+search                   : true
+search_full_content      : true
 name                     : &name Yussuf Fasasi
-description              : &description Compuational Material Science,Research & Blogs   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description Computational Material Science,Research & Blogs   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://yfasasi.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -38,10 +40,10 @@ author:
   googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : "https://orcid.org/yourorcidurl"
+  orcid            : ""
   semantic         : # URL
   ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : ""
   researchgate     : # URL
   scopus           : # URL
   zotero           : # URL
@@ -244,6 +246,8 @@ defaults:
       type: posts
     values:
       layout: single
+      toc: true
+      toc_sticky: true
       author_profile: true
       read_time: true
       comments: true
