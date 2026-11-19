@@ -11,6 +11,9 @@ tags:
 
 Yesterday, I was reading Muzafer Sherif’s classic psychology paper on the autokinetic effect, and it left me thinking about just how much pull collective opinion has over us, over our individual judgment.
 
+![Muzafer Sherif autokinetic effect experiment]({{ "/images/sherif_autokinetic-paper.jpg" | relative_url }})
+*Figure: Excerpt from Muzafer Sherif’s study on group norm formation using the autokinetic effect.*
+
 In Sherif’s experiment, participants were placed in some kind of dark room and they were then asked to estimate how far a tiny point of light moved. In reality, the light never moved at all. The motion that they, in fact, perceived was actually just an optical illusion. When tested alone, each person developed their own individual estimate. Yet when placed into small groups and asked to state their estimates out loud, something striking happened: their answers gradually converged toward a shared group norm. Even more surprising, when participants were later tested alone again, they continued to rely on the group's estimate rather than returning to their original personal judgment.
 
 Reading that brought to mind one of Friedrich Nietzsche’s sharpest aphorisms from *Beyond Good and Evil*:
