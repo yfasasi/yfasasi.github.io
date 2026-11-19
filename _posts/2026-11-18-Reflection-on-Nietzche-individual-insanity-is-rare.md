@@ -15,7 +15,10 @@ In Sherif’s experiment, participants were placed in some kind of dark room and
 
 Reading that brought to mind one of Friedrich Nietzsche’s sharpest aphorisms from *Beyond Good and Evil*:
 
-> "Insanity in individuals is something rare - but in groups, parties, nations and epochs, it is the rule."
+<blockquote style="background-color: rgba(82, 173, 200, 0.12); border-left: 4px solid #52adc8; padding: 14px 18px; border-radius: 6px; margin: 20px 0; font-style: italic;">
+  "Insanity in individuals is something rare — but in groups, parties, nations and epochs, it is the rule."
+  <br><span style="font-style: normal; font-size: 0.9em; opacity: 0.85;">— Friedrich Nietzsche, <em>Beyond Good and Evil</em></span>
+</blockquote>
 
 Sherif’s experiment offers some quiet thoughts for me into why Nietzsche’s observation kind of seem so true. When reality is ambiguous, whether we are staring at a pinpoint of light in a dark room or navigating complex social and intellectual questions, standing alone feels uncomfortable. Most of us carry some kind of hesitation to be the outlier, so we subtly adjust our perception to match others. Over time, that convergence stops feeling like what we do to "fit in" and starts feeling like objective truth.
 
