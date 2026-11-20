@@ -212,5 +212,76 @@ As shown in the plot above, the total energy drops sharply between `20 Ry` and `
 
 *(The individual scf files will be saved as a folder. In each folder, you can click to see the input file and the output files. The entire calculation took about 20 seconds to finish because this is just a one atom primitive cell for Copper. Calculation time scales with more atoms in the unit cell)*
 
+## Step 5: Converge Charge Density Cutoff (`ecutrho`)
+
+For ultrasoft pseudopotentials (like GBRV's `cu_pbe_v1.2.uspp.F.UPF`), the charge density varies much more rapidly than the wavefunctions, meaning Quantum ESPRESSO's norm-conserving default (`ecutrho = 4 * ecutwfc = 240 Ry`) is usually too low. Let's fix `ecutwfc = 60 Ry` and test `ecutrho` from `200 Ry` to `1100 Ry`:
+
+```python
+testing_erhos = [200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100]
+
+input_data = {
+    "calculation": "scf",
+    "input_dft": "pbe",
+    "ecutwfc": 60,
+    "etot_conv_thr": 1e-6,
+    "forc_conv_thr": 2e-5,
+    "conv_thr": 1e-7,
+    "occupations": "smearing",
+    "smearing": "gaussian",
+    "degauss": 0.05,
+}
+
+Energies_rhos = []
+
+for ecutrho in testing_erhos:
+    input_data.update({"ecutrho": ecutrho, "prefix": f"Bulk_Cu_scf_{ecutrho}"})
+    calculator = Espresso(
+        profile=profile,
+        kpts=(4, 4, 4),
+        input_data=input_data.copy(),
+        pseudopotentials=pseudopotentials,
+        directory=os.path.join(".", f"Bulk_Cu_scf_{ecutrho}"),
+    )
+    Bulk_Cu.calc = calculator
+
+    energy = Bulk_Cu.get_potential_energy()
+    print(f"The single point energy for Bulk_Cu_scf_{ecutrho} is: {energy}")
+    Energies_rhos.append(energy)
+```
+
+**Output:**
+```text
+The single point energy for Bulk_Cu_scf_200 is: -5493.6513319637725
+The single point energy for Bulk_Cu_scf_300 is: -5493.651646391314
+The single point energy for Bulk_Cu_scf_400 is: -5493.651740950872
+The single point energy for Bulk_Cu_scf_500 is: -5493.651849116123
+The single point energy for Bulk_Cu_scf_600 is: -5493.651918505152
+The single point energy for Bulk_Cu_scf_700 is: -5493.65192830125
+The single point energy for Bulk_Cu_scf_800 is: -5493.6519204099495
+The single point energy for Bulk_Cu_scf_900 is: -5493.651909525395
+The single point energy for Bulk_Cu_scf_1000 is: -5493.651916872469
+The single point energy for Bulk_Cu_scf_1100 is: -5493.651908845111
+```
+
+### Plotting `ecutrho` Convergence
+
+```python
+plt.plot(testing_erhos, Energies_rhos, marker="o", mfc="red", mec="green")
+plt.title("Convergence of ecutrho with Energies", fontweight="bold", fontsize=12, color="red", style="italic")
+plt.xlabel("ecutrho (Ry)", color="green", fontweight="bold")
+plt.ylabel("Energies (eV)", fontweight="bold", color="green")
+plt.show()
+```
+
+![Convergence of ecutrho with Energies](/images/cu-ecutrhos-convergence.png)
+
+From the plot above, the default `4 * ecutwfc` (`240 Ry`) has not yet settled. The energy seems to stabilizes once **`ecutrho = 600 Ry`** 
+
+---
+
+## Try This Next: Converge Your k-Point Mesh (`kpts`)
+
+In this tutorial, we held `kpts = (4, 4, 4)` fixed to make the calculation go fast fast—which is too coarse for metallic calculations on Copper. Using your converged **`ecutwfc = 60`** and **`ecutrho = 600`**, try writing a loop over Monkhorst-Pack k-point grids—such as `(4, 4, 4)`, `(6, 6, 6)`, `(8, 8, 8)`, `(10, 10, 10)`, `(12, 12, 12)`, and `(16, 16, 16)`—and plot the total energy versus k-point density. 
+
 ---
 
