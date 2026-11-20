@@ -73,7 +73,8 @@ If you prefer a standalone desktop application instead of launching JupyterLab f
 1. Go to the official [JupyterLab Desktop GitHub releases page](https://github.com).
 2. Scroll down and select the installer for your operating system (Since I am using Windows, I will choose the **x64 installer**), then select a folder to save and run the installer.
 
-![Downloading the JupyterLab Desktop x64 installer](/images/tutorials/setup/jupyter_donwload_x64_installer.png)
+![Downloading the JupyterLab Desktop x64 installer](/images/jupyter_download_x64_installer.png)
+
 
 3. Once the standalone application opens, if you have not added Python to your system `PATH`, JupyterLab Desktop may not automatically detect your existing Python installation. Look at the bottom of the loaded window—you will see an option to select or add your Python environment inside the app. Let it finish configuring (this can take a minute), and you are readdy to go!
 
