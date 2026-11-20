@@ -65,3 +65,18 @@ JupyterLab will automatically open in your default web browser (or you can copy 
 ![Installing ASE, Pymatgen, Matplotlib, and Spglib in JupyterLab](/images/tutorials/setup/08-jupyterlab-packages.png)
 
 Once all four packages finish installing, your environment is ready for running atomistic simulations and DFT workflows!
+
+---
+
+## Alternative Option: Installing JupyterLab Desktop (Standalone App)
+
+If you prefer a standalone desktop application instead of launching JupyterLab from the terminal, you can install **JupyterLab Desktop** after setting up your Python environment:
+
+1. Go to the official [JupyterLab Desktop GitHub releases page](https://github.com).
+2. Scroll down and select the installer for your operating system (Since I am using Windows, I will choose the **x64 installer**), then select a folder to save and run the installer.
+
+![Downloading the JupyterLab Desktop x64 installer](/images/tutorials/setup/jupyter_donwload_x64_installer.png)
+
+3. Once the standalone application opens, if you have not added Python to your system `PATH`, JupyterLab Desktop may not automatically detect your existing Python installation. Look at the bottom of the loaded window—you will see an option to select or add your Python environment inside the app. Let it finish configuring (this can take a minute), and you are readdy to go!
+
+
