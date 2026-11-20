@@ -136,6 +136,8 @@ Now we loop over `ecutwfc` values from `20 Ry` to `90 Ry` while holding `ecutrho
 
 ![Working calculation after switching to forward slashes and adding -in espresso.pwi](/images/until_i_change_backslash_to_forward.png)
 
+4. The actual pseudopotentials for all the elements must be wrapped in a python dictionary like below. And you can specify other convergence parameters, DFT functional that you want to use, and various other Quantum espresso infomation in a variable called `input_data` just like below. Note that when I passed the profile inside the Espresso calculator, I copied the input_data for each run. This is to avoid data overwriting each other in the loop. Safer that way.
+
 
 ```python
 import os
@@ -206,9 +208,9 @@ plt.show()
 
 ![Convergence of ecutwfc with Energies](/images/cu-ecutwfc-convergence.png)
 
-As shown in the plot above, the total energy drops sharply between `20 Ry` and `40 Ry`, then levels off into a flat plateau beyond **`50–60 Ry`**. Fixing **`ecutwfc = 60 Ry`** gives a safe, well-converged wavefunction basis for our next test.
+As shown in the plot above, the total energy drops sharply between `20 Ry` and `40 Ry`, then levels flat beyond **`50–60 Ry`**. Fixing **`ecutwfc = 60 Ry`** gives a safe, well-converged wavefunction basis for the next test.
 
-*(Optional cleanup: If you want to delete the temporary calculation folders before running the next loop, you can use `shutil.rmtree` on folders starting with `bulk_Cu_scf_`.)*
+*(The individual scf files will be saved as a folder. In each folder, you can click to see the input file and the output files. The entire calculation took about 20 seconds to finish because this is just a one atom primitive cell for Copper. Calculation time scales with more atoms in the unit cell)*
 
 ---
 
