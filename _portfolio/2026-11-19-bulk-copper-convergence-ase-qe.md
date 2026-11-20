@@ -49,8 +49,13 @@ print("Saved to:", config_path)
 
 There are three common ways I, particularly, get a starting crystal structure in Python:
 1. **Materials Project (`MPRester`):** Query a relaxed structure directly by its Material ID (`mp-30`).
-2. **ASE `crystal()`:** Build a structure from crystallographic data (such as an ICSD entry) by giving it the element symbols, Wyckoff `basis` positions, `cellpar` lattice constants, and `spacegroup`. I notice that that `crystal()` returns the 4-atom conventional FCC cell by default unless you pass `primitive_cell=True`.
-3. **ASE `bulk()`:** Quickly generate standard elemental crystals by passing the symbol and crystal prototype (e.g., `bulk("Cu", "fcc")`), optionally overriding the experimental lattice constant `a`.
+2. **ASE `crystal()`:** Build a structure from crystallographic data (such as an ICSD entry) by giving it the element symbols, Wyckoff `basis` positions, `cellpar` lattice constants, and `spacegroup`. I notice that that `crystal()` returns the 4-atom conventional FCC cell by default unless you pass `primitive_cell=True`. Once you flag it with primitive_cell=True, it returns a one atom cell.
+
+   ![ASE crystal returning 4-atom conventional cell](/images/crystal_returns_4_atoms_if_you_dont_flag_it.png)
+
+   ![ASE crystal returning 1-atom primitive cell](/images/crystal_returns_one_atom_after_flagging.png)
+   
+4. **ASE `bulk()`:** Once can quickly generate elemental crystals by passing the symbol and crystal name (e.g., `bulk("Cu", "fcc")`). This saves us the stress of having to input the experimental lattice constant `a` like we did for the crystal() function.
 
 ```python
 from ase.build import bulk
@@ -63,7 +68,7 @@ import numpy as np
 with MPRester() as mpr:
     structure = mpr.get_structure_by_material_id("mp-30")
 
-# 2. Build 1-atom primitive cell from ICSD crystallographic parameters (Collection Code 136042)
+# 2. This buid a 1-atom primitive cell from ICSD crystallographic parameters (I used Collection Code 136042)
 Bulk_Cu = crystal(
     symbols=["Cu"],
     basis=[[0, 0, 0]],
@@ -72,16 +77,14 @@ Bulk_Cu = crystal(
     primitive_cell=True,
 )
 
-# 3. Quick elemental prototype using ASE's bulk builder
+# 3. Quick elemental construction using ASE's bulk builder. The tolerance matching here is just to check whether the two methods return identical
+crystal. np.isclose() can also work fine here. 
 Bulk_copper = bulk("Cu", "fcc")
 
 print("MP Structure:\n", structure)
 print("ASE crystal() cellpar:", Bulk_Cu.cell.cellpar())
 print("ASE bulk() cellpar:", Bulk_copper.cell.cellpar())
-print(
-    "Lattice parameters match within tolerance:",
-    np.allclose(Bulk_Cu.cell.cellpar()[:3], structure.lattice.abc, atol=1e-3, rtol=2e-2),
-)
+print("Lattice parameters match within tolerance:",np.allclose(Bulk_Cu.cell.cellpar()[:3], structure.lattice.abc, atol=1e-3, rtol=2e-2))
 ```
 
 **Output:**
@@ -104,14 +107,14 @@ True
 
 ## Step 3: Download Quantum ESPRESSO & Pseudopotentials
 
-Before running single-point self-consistent field (`scf`) convergence tests—and later variable-cell relaxations (`vc-relax`)—you need two external components:
-1. **Pseudopotential (`.UPF`):** Download the PBE ultrasoft pseudopotential library from the [GBRV Pseudopotential Library](https://rutgers.edu) (scroll down and download the **PBE UPF** archive for Quantum ESPRESSO) and extract it to a local folder.
+Before running single-point self-consistent field (`scf`) convergence tests—and later variable-cell relaxations (`vc-relax`)—you need two external components that you have to get online:
+1. **Pseudopotential (`.UPF`):** Download the PBE ultrasoft pseudopotential library from the [GBRV Pseudopotential Library](https://rutgers.edu) (scroll down and download the **PBE UPF** archive for Quantum ESPRESSO) and extract it to a local folder on your laptop.
 2. **Quantum ESPRESSO (`pw.x`):** Windows users can download precompiled binaries from the [QMatSuite Quantum ESPRESSO Windows Releases](https://github.com) page (select the latest `qe-7.5-win...` archive) and extract it.
 
 > **Why Converge Cutoffs on a Coarse k-Point Grid First?**
-> Testing high wavefunction cutoffs (`80–100 Ry`) on a dense k-point mesh (`16×16×16`) is computationally expensive. Running cutoff convergence on a smaller, fixed k-point grid (`4×4×4`) keeps each calculation fast. Once the optimal `ecutwfc` and `ecutrho` are locked in, we can run a separate k-point convergence test at those converged cutoffs.
+> Testing high wavefunction cutoffs (`80–100 Ry`) on a dense k-point mesh (`16×16×16`) is computationally expensive. Running cutoff convergence on a smaller, fixed k-point grid (`4×4×4`) keeps each calculation fast. Once the optimal `ecutwfc` and `ecutrho` are now established, we can run a separate k-point convergence test at those converged cutoffs.
 
-*(Note: Once you are ready for structural relaxation in a follow-up step, you can either set `calculation="vc-relax"` directly inside Quantum ESPRESSO's `input_data`, or keep `calculation="scf"` and wrap your `Atoms` object in ASE's `FrechetCellFilter` or `ExpCellFilter` paired with an ASE optimizer like `BFGS`.)*
+*(Note: Once you are ready for structural relaxation in a follow-up step, you can either set `calculation="vc-relax"` directly inside Quantum ESPRESSO's `input_data`, or keep `calculation="scf"` and wrap your `Atoms` object in ASE's `FrechetCellFilter` or `ExpCellFilter` together with an ASE optimizer like `BFGS`.)*
 
 ---
 
