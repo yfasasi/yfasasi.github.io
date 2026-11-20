@@ -62,8 +62,6 @@ JupyterLab will automatically open in your default web browser (or you can copy 
 
 *(Prefixing commands with `!` tells Jupyter to run them as shell commands directly from the notebook cell. In newer Jupyter environments, `pip install ase pymatgen matplotlib spglib` without the `!` also works. It kinda work for me)*
 
-![Installing ASE, Pymatgen, Matplotlib, and Spglib in JupyterLab](/images/tutorials/setup/08-jupyterlab-packages.png)
-
 Once all four packages finish installing, your environment is ready for running atomistic simulations and DFT workflows!
 
 ---
