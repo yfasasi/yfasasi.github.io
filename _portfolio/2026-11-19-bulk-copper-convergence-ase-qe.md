@@ -17,12 +17,12 @@ In this tutorial, we determine the optimal DFT input parameters for **bulk FCC C
 
 ## Step 1: Set Up Your Materials Project API Key
 
-Fetching crystal structures directly from the **Materials Project** saves time compared to building cells manually. To query the database without pasting your API key into every notebook, save it once to your home directory's `.pmgrc.yaml` configuration file.
+Fetching crystal structures directly from the **Materials Project** can save us some time compared to building cells manually. To query the database without pasting your API key into every notebook, save it once to your home directory's `.pmgrc.yaml` configuration file (more explanation below).
 
 1. Create a free account at the [Materials Project](https://materialsproject.org) and copy your API key from your dashboard.
 2. Install the official `mp-api` client and save your key to `~/.pmgrc.yaml`:
 3. For me, I already have my `keys` as shown in the image below (key covered). That way I query the relaxed bulk copper from MP. The materials project optimize their systems (finding the best atomic arrangements for different materials) using the VASP code and certain combinations of DFT functionals. But just because they have optimize the system doesnt mean we should not optimize it too because for the most part, we are using a different calculator (Quantum Espresso) different than VASP. And most likely, we will be using different pseudopotentials. Results obtained for specific system are only true under the set of conditions where they were obtained, though the underlying physics and trend is generally the same across material families.Initally, I didnt know the MP ID for the face centered cubic bulk copper that I wanted to use, but I did a quick google search **"materials project ID for bulk copper"** and I immediately know the most thermodynamically stable bulk copper crystalizes in the fcc crystal structure and the materials project id is actually `"mp-30"`. This is the material we would be working on.
-4. For those who already have their MP API key, you can save it permanently so you never have to input it everytime.
+4. Once you have your MP API key, you can save it permanently so you never have to input it everytime as shown below.
 
 
 ```python
@@ -41,13 +41,15 @@ print("Saved to:", config_path)
 
 > **Security Note:** Never share your real `PMG_MAPI_KEY` to a public GitHub repository or blog post. Storing it in `~/.pmgrc.yaml` lets `MPRester()` to see it automatically behind the scenes. I do not reveal mine in this post. I guard it like my life depend on it😒
 
+![Saving Materials Project API key to .pmgrc.yaml](/images/saving_material_project_id_forever.png)
+
 ---
 
 ## Step 2: Import Libraries and Retrieve the Crystal Structure
 
-There are three common ways to obtain a starting crystal structure in Python:
+There are three common ways I, particularly, get a starting crystal structure in Python:
 1. **Materials Project (`MPRester`):** Query a relaxed structure directly by its Material ID (`mp-30`).
-2. **ASE `crystal()`:** Build a structure from crystallographic data (such as an ICSD entry) by specifying the element symbols, Wyckoff `basis` positions, `cellpar` lattice constants, and `spacegroup`. Note that `crystal()` returns the 4-atom conventional FCC cell by default unless you pass `primitive_cell=True`.
+2. **ASE `crystal()`:** Build a structure from crystallographic data (such as an ICSD entry) by giving it the element symbols, Wyckoff `basis` positions, `cellpar` lattice constants, and `spacegroup`. I notice that that `crystal()` returns the 4-atom conventional FCC cell by default unless you pass `primitive_cell=True`.
 3. **ASE `bulk()`:** Quickly generate standard elemental crystals by passing the symbol and crystal prototype (e.g., `bulk("Cu", "fcc")`), optionally overriding the experimental lattice constant `a`.
 
 ```python
