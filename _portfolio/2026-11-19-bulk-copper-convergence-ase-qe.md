@@ -122,13 +122,28 @@ Before running single-point self-consistent field (`scf`) convergence tests—an
 
 Now we loop over `ecutwfc` values from `20 Ry` to `90 Ry` while holding `ecutrho = 720 Ry` and `kpts = (4, 4, 4)` constant. Because Copper is a metal, we also include Gaussian smearing (`occupations="smearing"`, `smearing="gaussian"`, `degauss=0.05`) to smoothly integrate electronic states near the Fermi level.
 
+### Setting Up the `pw.exe` Path on Windows (and Avoiding Common Errors)
+
+1. Open the folder where you extracted Quantum ESPRESSO (or your pseudopotentials), locate **`pw.exe`** inside the `bin` subfolder, **right-click** on it, and choose **Copy as path**:
+
+![Locating pw.exe and copying its path in Windows File Explorer](/images/pw.x_finder.png)
+
+2. When you paste that path into `EspressoProfile(command=...)`, Windows uses backslashes (`\`). I noticed when I left that backslashes like that in `command`, Quantum ESPRESSO fails to find `pw.exe`:
+
+![Error when using Windows backslashes in EspressoProfile command](/images/windows_cant_find_pw.x.png)
+
+3. **The Fix:** Replace all backslashes (`\`) with **forward slashes (`/`)** in `command` Once updated, the calculation runs smoothly:
+
+![Working calculation after switching to forward slashes and adding -in espresso.pwi](/images/until_i_change_backslash_to_forward.png)
+
+
 ```python
 import os
 from ase.calculators.espresso import Espresso, EspressoProfile
 
 # Update these two paths to match where you extracted pw.exe and the GBRV UPF files
 profile = EspressoProfile(
-    command=r"C:/Users/Test_PC/Downloads/qe-7.5-win-oneapi-msmpi/bin/pw.exe -in espresso.pwi",
+    command=r"C:/Users/Test_PC/Downloads/qe-7.5-win-oneapi-msmpi/bin/pw.exe",
     pseudo_dir=r"C:\Users\Test_PC\Downloads\all_pbe_UPF_v1.5",
 )
 
