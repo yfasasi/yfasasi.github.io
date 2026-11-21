@@ -13,10 +13,10 @@ The human mind is one of the most powerful resources. Every idea, whether good o
 
 ---
 
-**"What does this phrase really means?"**
+**What does this phrase really mean?**
 
 When stripped bare, the phrase means your outer life, what you project on the outside is a reflection of what is happening within. It does'nt mean you are in control of every single thing that happen to you, as some things are out of control no matter how hard you try. But it does mean you can sometimes shape how you interpret the world by projecting a positive outlook. If you pre-occupy your mind with how there is not a single good person anymore in the world, even when you come across a person who means well, they are not going to be of any benefit to you. If you constantly worry about how everyone in the world is out to get you, you will wear yourself out unnecessarily. 
-> **Key Takeaway:** You do not see the world as it is, you see the world as *you* are.
+> **Key Thing:** You do not see the world as it is, you see the world as *you* are.
 
 ---
 **Three Ways Your Inner State Mirror Your Outer Life**
@@ -38,7 +38,7 @@ People notice when you stop setting healthy boundaries, when you have given up o
 **How to Apply this Principle Today**
 
 - Take a mental inventory of your thoughts: Notice the recurring story you tell yourself when things go wrong. The harsh judgements you project onto others   without knowing the full story. Replace those with curiosity and open mindset. When you found yourself slipping, take a step back and audit your thought.
-- Change small external habit one at a time: Going for a walk might help you clear your mind. Cleaning your rooms and organizing your study space might help you clarify your thought. The key is in taking active steps to shape your overall outlook on life.
+- Change small external habit one at a time: Going for a walk might help you clear your mind. Cleaning your rooms and organizing your study space might       help you clarify your thought. The key is in taking active steps to shape your overall outlook on life.
 
 ---
 
