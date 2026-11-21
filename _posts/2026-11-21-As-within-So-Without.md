@@ -23,7 +23,7 @@ When stripped bare, the phrase means your outer life, what you project on the ou
 
 **1. Your Focus Filter Your Reality**
 
-Ever wonder why our brain naturally optimizes for the information that confirms our bias. We naturally lean toward details that solidify our existing beliefs. Psychologists call this *The confirmation bias.* When you have already position your brain to believe that everyone is bad, your brain naturally highlight every slight, expands every little inconveniences far beyond what they really are, and you mostly distrust everyone. This is how your thought matches a version of reality it was already programmed to believe.
+Ever wonder why our brain naturally optimizes for the information that confirms our bias. We usually lean toward details that solidify our existing beliefs. Psychologists call this *The confirmation bias.* When you have already position your brain to believe that everyone is bad, your brain will highlight every slight, expands every little inconveniences far beyond what they really are, and you will mostly distrust everyone. This is how your thought matches a version of reality it was already programmed to believe.
 
 **2. Your Environment reflect your mental clutter**
 
