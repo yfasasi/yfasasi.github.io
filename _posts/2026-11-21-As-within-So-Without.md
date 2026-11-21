@@ -1,5 +1,7 @@
-Title: As Within, So Without: Why Your Inner World Shapes Your Outer Reality
+---
+title: As Within, So Without: Why Your Inner World Shapes Your Outer Reality
 date: 2026-11-21
+permalink: /posts/2026/11/as-within-so-without/
 tags:
 - philosophy
 - mindset
