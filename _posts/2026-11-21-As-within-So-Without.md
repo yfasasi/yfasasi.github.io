@@ -7,4 +7,5 @@ tags:
 - mindset
 ---
 "**As within, So Without: Why your inner mindset shapes everything**"
+
 "**As Above, so below; as within, so without**"
