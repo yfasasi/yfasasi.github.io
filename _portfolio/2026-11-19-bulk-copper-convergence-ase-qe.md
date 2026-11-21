@@ -11,7 +11,7 @@ In this tutorial, we determine the optimal DFT input parameters for **bulk FCC C
 * **`ecutrho`**: Kinetic energy cutoff for charge density and potential. The default 4 * ecutwfc is Quantum Espresso is sometimes insufficient.
 * **`etot_conv_thr` & `conv_thr`**: Total energy and self-consistent field (SCF) electronic convergence thresholds.
 
-*(Note that if you haven't installed JupyterLab, ASE, and Pymatgen yet, check out my [Step-by-Step Installation Guide](/tutorials/2026-11-19-installing-jupyterlab-materials-science/) first.)*
+*(Note that if you haven't installed JupyterLab, ASE, and Pymatgen yet, check out my [Step-by-Step Installation Guide](/portfolio/2026-11-19-installing-jupyterlab-materials-science/) first.)*
 
 ---
 
