@@ -2,6 +2,7 @@
 title: "Step-by-Step Guide: Installing JupyterLab and Materials Science Python Packages"
 excerpt: "How to install Python, set up JupyterLab on Windows, troubleshoot PATH warnings, and install ASE, Pymatgen, Matplotlib, and Spglib."
 collection: portfolio
+permalink: /portfolio/2026-11-19-installing-jupyterlab-materials-science/
 ---
 
 To get the most out of the computational materials science tutorials on this site, you will need a working Python environment with **JupyterLab** and a few quite important scientific libraries. Follow this step-by-step guide to set everything up from scratch on Windows.
