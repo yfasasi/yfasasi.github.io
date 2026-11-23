@@ -32,6 +32,6 @@ Whenever these thoughts rush in, direct them to something productive. Reflect on
 
   ---
 
-  > *It is unlikely that humans will be able to permanently eliminate feelings of envy from their life. But being able to recognize it goes a long way           towards better accountability.*
+  > *It is unlikely that humans will be able to permanently eliminate feelings of envy from their life. But being able to recognize it goes a long way           towards better accountability and being in control of your own happiness.*
 
 
