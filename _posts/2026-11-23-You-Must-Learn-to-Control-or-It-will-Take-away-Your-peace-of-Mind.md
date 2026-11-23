@@ -10,7 +10,7 @@ tags:
 ---
 
 > ***Envy is that which takes light away from your face. Contentment is that which satisfy your souls and restore your light.***
-
+---
 Envy is as old as man. From the primitive hunter and gatherer to the sophisticated man who build sky scrapper and launch satellites into space, the idea of envy and its attendant harm has not changed. From the viewpoint of the envier, they can't rationalize why they feel that way other than the fact that they deserve as much as the other person got, or that the other person doesn't merit what they got. Sometimes, the other person doesn't even needs to get so much to be envied. They just need to exist. Envy can push the envier to harm the envied. Envy can push the envier to plot the downfall of the ones they envied. Envy can do so much more and it doesn't need much justification. Envy doesn't only harm the envied, it also poses danger to the envier in obvious ways. 
 ---
 
