@@ -1,5 +1,6 @@
 ---
 title: "How to Converge k-points in Quantum ESPRESSO Using ASE (Bulk Copper Tutorial)"
+excerpt: "A step-by-step guide on running automated k-point convergence tests for bulk FCC copper in Quantum ESPRESSO using ASE, checking internal stress, and plotting the convergence curve."
 collection: portfolio
 type: "Tutorial"
 permalink: /portfolio/qe-ase-kpoint-convergence-copper
