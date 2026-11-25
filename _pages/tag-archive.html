@@ -28,3 +28,24 @@ author_profile: true
     {% endif %}
   {% endfor %}
 {% endfor %}
+
+<script>
+  function filterByHash() {
+    const hash = window.location.hash.substring(1);
+    const headings = document.querySelectorAll('.archive__subtitle');
+    if (!hash) return;
+
+    headings.forEach(h2 => {
+      const match = (h2.id === hash);
+      h2.style.display = match ? '' : 'none';
+      let next = h2.nextElementSibling;
+      while (next && !next.classList.contains('archive__subtitle') && next.tagName !== 'SCRIPT') {
+        next.style.display = match ? '' : 'none';
+        next = next.nextElementSibling;
+      }
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', filterByHash);
+  window.addEventListener('hashchange', filterByHash);
+</script>
