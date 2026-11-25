@@ -76,7 +76,7 @@ for kpt in kpts_to_test:
 
 Before we plot the total energies, let's look at something quite important. If you check inside the Quantum ESPRESSO `.pwo` output files, you will see this statement but make sure you are checking toward the end of the file: **Computing stress (Cartesian axis) and pressure**.
 
-* **Coarse Grid (`2x2x2`):** QE reported a massive **`243.33 kbar`** of artificial pressure and an energy of **`-5491.915 eV`**—even though the atoms doesnt moved.
+* **Coarse Grid (`2x2x2`):** QE reported a massive **`243.33 kbar`** of artificial pressure and an energy of **`-5491.915 eV`** even though the atoms doesnt moved.
 * **Dense Grid (`14x14x14`):** That pressure dropped down to **`0.85 kbar`**, and the energy stabilized at about **`-5493.810 eV`**.
 
 #### Why Did This Happen?
