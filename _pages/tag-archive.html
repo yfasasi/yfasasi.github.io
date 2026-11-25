@@ -8,10 +8,23 @@ author_profile: true
 {% include base_path %}
 {% include group-by-array collection=site.posts field="tags" %}
 
-{% for tag in group_names %}
-  {% assign posts = group_items[forloop.index0] %}
-  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
-  {% for post in posts %}
-    {% include archive-single.html %}
+{% assign all_items = site.posts | concat: site.portfolio %}
+
+{% assign raw_tags = "" %}
+{% for item in all_items %}
+  {% if item.tags %}
+    {% assign item_tags = item.tags | join: "|" %}
+    {% assign raw_tags = raw_tags | append: "|" | append: item_tags %}
+  {% endif %}
+{% endfor %}
+{% assign unique_tags = raw_tags | remove_first: "|" | split: "|" | uniq | sort %}
+
+{% for tag in unique_tags %}
+  {% assign tag_slug = tag | slugify %}
+  <h2 id="{{ tag_slug }}" class="archive__subtitle">{{ tag }}</h2>
+  {% for post in all_items %}
+    {% if post.tags contains tag %}
+      {% include archive-single.html %}
+    {% endif %}
   {% endfor %}
 {% endfor %}
