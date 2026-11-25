@@ -77,14 +77,14 @@ for kpt in kpts_to_test:
 Before we plot the total energies, let's look at something quite important. If you check inside the Quantum ESPRESSO `.pwo` output files, you will see this statement but make sure you are checking toward the end of the file: **Computing stress (Cartesian axis) and pressure**.
 
 * **Coarse Grid (`2x2x2`):** QE reported a massive **`243.33 kbar`** of artificial pressure and an energy of **`-5491.915 eV`**—even though the atoms doesnt moved.
-* **Dense Grid (`14x14x14`):** That pressure dropped all the way down to **`0.85 kbar`**, and the energy stabilized at **`-5493.810 eV`**.
+* **Dense Grid (`14x14x14`):** That pressure dropped down to **`0.85 kbar`**, and the energy stabilized at about **`-5493.810 eV`**.
 
 #### Why Did This Happen?
-1. **Metals Need Dense kPoint Sampling:** Copper is a metal with a complex Fermi surface. A coarse `2x2x2` grid poorly samples the electrons' momentum space, creating high numerical artifacts in both the total energy and the stress tensor.
+1. **Metals Need Dense kPoint Sampling:** Copper is a metal and its fermi surface needs much denser kpoints. A coarse `2x2x2` grid poorly samples the electrons' momentum space. This doesnt converged the total energy and the stress tensor that well.
 2. **Static `scf` Keeps the simulation Box Frozen:** Because we ran a fixed-cell `scf` calculation, Quantum ESPRESSO isnt adjusting the lattice constant to relieve stress. Any artificial numerical stress just stays there until we feed it enough k-points.
 
-#### Next Step: Finding the optimal kpoits
-Now that the physical stress has settled near zero, let's plot **Total Energy vs. k-Point Grid** to find the optimal trade-off: the smallest k-point mesh where the energy converges within **`1 meV` (`0.001 eV`)**—which, looking at the numbers above (`-5493.8099 eV` at `12x12x12` vs. `-5493.8100 eV` at `14x14x14`), happens right around **`12x12x12`**!.
+#### Next Step: Finding the optimal kpoints
+let's plot **Total Energy vs. k-Point Grid** to find the optimal kpts: the smallest k point mesh where the energy converges within **`1 meV` (`0.001 eV`)** which, looking at the numbers above (`-5493.8099 eV` at `12x12x12` vs. `-5493.8100 eV` at `14x14x14`), happens right around **`12x12x12`**!.
 
 From the matplotlib plot, we can see the curve stays flat at around kpt 10x10x10 all through kpts 14x14x14. Any kpts within that is optimal for our system. 
 
@@ -98,12 +98,12 @@ from matplotlib import pyplot as plt
 Energies = []
 
 """neccessary_folders = [folder for folder in os.listdir(os.getcwd()) if folder.startswith("kpt_cu")][0]
-print(neccessary_folders)"""
-"""for root,folders,files in os.walk(neccessary_folders):
+print(neccessary_folders)
+for root,folders,files in os.walk(neccessary_folders):
     for file in files:
         if "pwo" in file and "checkpoint" not in file:
-            print(file)"""
-"""for root,folders,files in os.walk(neccessary_folders):
+            print(file)
+for root,folders,files in os.walk(neccessary_folders):
     print(natsorted(folders))"""
 
 pwo_files = natsorted(glob.glob(os.path.join(os.getcwd(),"*kpt_cu_con*","*cu_kpt*","*.pwo")))
