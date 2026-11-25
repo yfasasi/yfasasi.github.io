@@ -4,7 +4,7 @@
 
 {% include comments-providers/scripts.html %}
 
-<!-- === Enhanced Code Blocks & One-Click Copy === -->
+<!-- === One-Click Copy Button & Reading Progress Bar === -->
 <style>
   /* Hide Minimal Mistakes default </> icon */
   div.highlighter-rouge::before,
@@ -12,146 +12,107 @@
     display: none !important;
   }
 
-  /* Sleek Dark Slate Code Container */
   div.highlighter-rouge,
-  figure.highlight {
+  figure.highlight,
+  pre {
     position: relative;
-    background-color: #161b22 !important;
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    margin: 1.5em 0;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   }
 
-  /* Top Terminal Bar */
-  .code-header-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 14px;
-    background-color: #1f242c;
-    border-bottom: 1px solid #30363d;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #8b949e;
-  }
-
-  /* Code Area Adjustments */
-  div.highlighter-rouge pre.highlight,
-  figure.highlight pre {
-    margin: 0 !important;
-    padding: 14px 16px !important;
-    background-color: #161b22 !important;
-    color: #e6edf3 !important;
-    border: none !important;
-    font-size: 0.88em;
-    line-height: 1.55;
-    overflow-x: auto;
-  }
-
-  div.highlighter-rouge code,
-  figure.highlight code {
-    background-color: transparent !important;
-    color: #e6edf3 !important;
-  }
-
-  /* Keep syntax colors readable on dark background */
-  .highlight .c, .highlight .c1, .highlight .cm { color: #8b949e !important; font-style: italic; } /* Comments */
-  .highlight .s, .highlight .s1, .highlight .s2 { color: #a5d6ff !important; } /* Strings */
-  .highlight .k, .highlight .kn, .highlight .kd { color: #ff7b72 !important; } /* Keywords */
-  .highlight .nf, .highlight .nb { color: #d2a8ff !important; } /* Functions */
-  .highlight .mi, .highlight .mf { color: #79c0ff !important; } /* Numbers */
-  .highlight .o, .highlight .p { color: #c9d1d9 !important; } /* Operators */
-
-  /* Copy Button */
+  /* Copy Button (matches your original hover style) */
   .copy-code-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 10px;
-    font-size: 11px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: inherit;
     font-weight: 600;
-    text-transform: none;
-    letter-spacing: normal;
-    color: #c9d1d9;
-    background-color: #21262d;
-    border: 1px solid #363b42;
+    color: #e2e8f0;
+    background-color: rgba(30, 41, 59, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.4);
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    opacity: 0;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+
+  div.highlighter-rouge:hover .copy-code-btn,
+  figure.highlight:hover .copy-code-btn,
+  pre:hover .copy-code-btn,
+  .copy-code-btn:focus {
+    opacity: 1;
   }
 
   .copy-code-btn:hover {
-    background-color: #30363d;
-    border-color: #8b949e;
+    background-color: #0f172a;
     color: #ffffff;
   }
 
   .copy-code-btn.copied {
-    background-color: #1f6feb;
-    border-color: #388bfd;
+    background-color: #16a34a;
+    border-color: #16a34a;
     color: #ffffff;
+    opacity: 1;
+  }
+
+  /* Smooth Reading Progress Bar at Top of Screen */
+  #reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
   }
 </style>
+
+<div id="reading-progress-bar"></div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const codeBlocks = document.querySelectorAll("div.highlighter-rouge, figure.highlight");
 
     codeBlocks.forEach(function (block) {
-      if (block.querySelector(".code-header-bar")) return;
-
       const codeElement = block.querySelector("pre code") || block.querySelector("pre");
       if (!codeElement) return;
 
-      // Detect language from class name (e.g., language-python -> PYTHON)
-      let langLabel = "CODE";
-      block.classList.forEach(function (cls) {
-        if (cls.startsWith("language-")) {
-          const lang = cls.replace("language-", "");
-          if (lang && lang !== "plaintext" && lang !== "text") {
-            langLabel = lang.toUpperCase();
-          } else {
-            langLabel = "OUTPUT";
-          }
-        }
-      });
-
-      // Build Header Bar
-      const headerBar = document.createElement("div");
-      headerBar.className = "code-header-bar";
-
-      const langSpan = document.createElement("span");
-      langSpan.textContent = langLabel;
-
-      // Build Copy Button
       const button = document.createElement("button");
       button.className = "copy-code-btn";
       button.type = "button";
-      button.innerHTML = "📋 Copy";
+      button.innerText = "Copy";
       button.setAttribute("aria-label", "Copy code to clipboard");
 
       button.addEventListener("click", function () {
         const textToCopy = codeElement.innerText;
 
         navigator.clipboard.writeText(textToCopy).then(function () {
-          button.innerHTML = "✓ Copied!";
+          button.innerText = "Copied!";
           button.classList.add("copied");
 
           setTimeout(function () {
-            button.innerHTML = "📋 Copy";
+            button.innerText = "Copy";
             button.classList.remove("copied");
           }, 2000);
         });
       });
 
-      headerBar.appendChild(langSpan);
-      headerBar.appendChild(button);
-      block.insertBefore(headerBar, block.firstChild);
+      block.appendChild(button);
     });
+  });
+
+  window.addEventListener("scroll", function () {
+    const progressBar = document.getElementById("reading-progress-bar");
+    if (!progressBar) return;
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    if (docHeight > 0) {
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      progressBar.style.width = scrollPercent + "%";
+    }
   });
 </script>
