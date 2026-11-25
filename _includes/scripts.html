@@ -198,3 +198,46 @@
   });
 </script>
 
+<!-- === Reading Progress Bar & Theme-Aware Inline Code === -->
+<style>
+  /* Smooth Reading Progress Bar at Top of Screen */
+  #reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  /* Dark Inline `code` Pills ONLY in Dark Mode */
+  html[data-theme="dark"] :not(pre) > code {
+    background-color: #21262d !important;
+    color: #79c0ff !important;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    padding: 0.15em 0.4em;
+    font-size: 0.88em;
+  }
+</style>
+
+<div id="reading-progress-bar"></div>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const progressBar = document.getElementById("reading-progress-bar");
+    if (!progressBar) return;
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    if (docHeight > 0) {
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      progressBar.style.width = scrollPercent + "%";
+    }
+  });
+</script>
+
+
