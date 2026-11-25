@@ -135,7 +135,7 @@ plt.ylabel("Energies (eV)")
 
 
     
-![png](Convergence_Kpts_bulk_copper_files/Convergence_Kpts_bulk_copper_3_2.png)
+![png](/images/Convergence_Kpts_bulk_copper_3_2.png)
     
 
 
