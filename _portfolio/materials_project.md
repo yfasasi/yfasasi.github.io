@@ -154,7 +154,7 @@ with MPRester() as mpr: #usually you will input your MP key as a string "key" in
 # The imported structure contains the following:
 - Full formula: This is the complete formula of your imported structure. The conventional cell of NdBFe contains 8 Nd, 56 Fe and 4 Boron.
 - Reduced formula: The reduced formula represents the simplest chemical ratio of the elements
-- lattice constant (abc): This is the lenght of the lattice vector (already printed as scalar). In a tetragonal cell like NdBFe, a is the lenght of the simulation cell along the x axis, b is the lenght along $y$ and c is the height. also $a=b$.
+- lattice constant (abc): This is the lenght of the lattice vector (already printed as scalar). In a tetragonal cell like NdBFe, a is the lenght of the simulation cell along the x axis, b is the lenght along y and c is the height. also a=b.
 - PBC (`True,True,True`) : periodic boundary condition. periodic codes like VASP used to compute this material obeys PBC in all 3 direction. It is just a mathematical trick to allow us simulate infinite crystal within a finite simulation box
 - atomic coordinates for each element are also printed along with their respective `magnetic moment` values. `Iron (Fe)` provides the bulk of the magnetic property in this material. That is why the value is larger. The positive value (spin up) and negative value (spin down). 
 
@@ -239,10 +239,12 @@ write(os.path.join(os.getcwd(),"Nd_ase_magnet.cif"),ase_objects,format="cif")
 
 #os.startfile(os.path.join(os.getcwd(),"Nd_ase_magnet.cif")) #This launches a notepad application. check at the bottom of the screen to allow
 
-[Download the generated Nd₂Fe₁₄B CIF file](/files/NdFeB.cif)
+
 
 
 ```
+
+[Download the generated Nd₂Fe₁₄B CIF file](/files/NdFeB.cif)
 
 # Now we can print the band structure of this material and do some fun with the band structure objects
 
