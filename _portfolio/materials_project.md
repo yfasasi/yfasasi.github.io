@@ -4,7 +4,6 @@ excerpt: "A hands-on guide to querying crystal structures via the Materials Proj
 collection: portfolio
 ---
 
-# From Materials Project to DFT: Fetching, Analyzing, and Visualizing Crystal Structures with Pymatgen & ASE
 
 ### This tutorial shows how to use Pymatgen (Python Materials Genomics) to import materials into your local machine for DFT simulation
 
