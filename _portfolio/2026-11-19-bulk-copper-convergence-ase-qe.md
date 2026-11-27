@@ -108,8 +108,8 @@ True
 ## Step 3: Download Quantum ESPRESSO & Pseudopotentials
 
 Before running single-point self-consistent field (`scf`) convergence tests—and later variable-cell relaxations (`vc-relax`)—you need two external components that you have to get online:
-1. **Pseudopotential (`.UPF`):** Download the PBE ultrasoft pseudopotential library from the [GBRV Pseudopotential Library](https://rutgers.edu) (scroll down and download the **PBE UPF** archive for Quantum ESPRESSO) and extract it to a local folder on your laptop.
-2. **Quantum ESPRESSO (`pw.x`):** Windows users can download precompiled binaries from the [QMatSuite Quantum ESPRESSO Windows Releases](https://github.com) page (select the latest `qe-7.5-win...` archive) and extract it.
+1. **Pseudopotential (`.UPF`):** Download the PBE ultrasoft pseudopotential library from the [GBRV Pseudopotential Library](https://www.physics.rutgers.edu/gbrv/){:target="_blank" rel="noopener noreferrer"} (scroll down and download the **PBE UPF** archive for Quantum ESPRESSO) and extract it to a local folder on your laptop.
+2. **Quantum ESPRESSO (`pw.x`):** Windows users can download precompiled binaries from the [QMatSuite Quantum ESPRESSO Windows Releases](https://github.com/QMatSuite/quantum-espresso-windows-exe/releases/tag/qe-7.5-win-oneapi-msmpi){:target="_blank" rel="noopener noreferrer"} page (select the latest `qe-7.5-win...` archive) and extract it.
 
 > **Why Converge Cutoffs on a Coarse k-Point Grid First?**
 > Testing high wavefunction cutoffs (`80–100 Ry`) on a dense k-point mesh (`16×16×16`) is computationally expensive. Running cutoff convergence on a smaller, fixed k-point grid (`4×4×4`) keeps each calculation fast. Once the optimal `ecutwfc` and `ecutrho` are now established, we can run a separate k-point convergence test at those converged cutoffs.
